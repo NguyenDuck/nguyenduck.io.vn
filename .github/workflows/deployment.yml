@@ -5,9 +5,7 @@ on:
     paths:
       - src
 
-permissions:
-  contents: write
-
+run-name: Deployment
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -28,16 +26,24 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: "NguyenDuck/nguyenduck.io.vn-build"
+          token: ${{ secrets.BUILD_TOKEN }}
+          path: "build"
 
       - name: Build
         run: npm run build
 
-      - name: Deploy to repository
+      - name: Prepare deploy to repository
         run: |
-          cp .cpanel.yml build -r
-          cd build
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add -A .
-          git commit -m "Update website"
-          git push origin dev
+          cp .cpanel.yml build -rf
+
+      - name: Deploy
+        uses: liziwl/git-push-action@master
+        with:
+          git_token_holder: "NguyenDuck"
+          git_token: ${{ secrets.BUILD_TOKEN }}
+          commit_user: "github-actions"
+          commit_email: "github-actions@github.com"
+          push_dir: "build"
+          repository_url: "github.com/NguyenDuck/nguyenduck.io.vn-build.git"
+          branch: "dev"
+          keep_history: true
