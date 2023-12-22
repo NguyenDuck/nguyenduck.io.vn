@@ -2,5 +2,11 @@
 	"typescript.format.semicolons": "remove",
 	"editor.formatOnSave": true,
 	"editor.tabSize": 4,
-	"editor.cursorSmoothCaretAnimation": "explicit"
+	"editor.cursorSmoothCaretAnimation": "explicit",
+	"[yaml]": {
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2,
+		"editor.autoIndent": "advanced",
+		"diffEditor.ignoreTrimWhitespace": false
+	}
 }
