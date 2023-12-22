@@ -38,6 +38,7 @@ jobs:
           cd deploy
           git config user.name github-actions
           git config user.email github-actions@github.com
+          git config credential.helper cache
           git add -A .
           git commit -m "Update website"
           git push https://${{ secrets.BUILD_TOKEN }}@github.com/NguyenDuck/nguyenduck.io.vn-build.git dev
