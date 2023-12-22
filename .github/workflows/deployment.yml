@@ -40,4 +40,4 @@ jobs:
           git config user.email github-actions@github.com
           git add -A .
           git commit -m "Update website"
-          git push https://${{ secrets.GITHUB_TOKEN }}@github.com/NguyenDuck/nguyenduck.io.vn-build.git dev
+          git push https://${{ secrets.BUILD_TOKEN }}@github.com/NguyenDuck/nguyenduck.io.vn-build.git dev
