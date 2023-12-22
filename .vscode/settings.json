@@ -1,0 +1,6 @@
+{
+	"typescript.format.semicolons": "remove",
+	"editor.formatOnSave": true,
+	"editor.tabSize": 4,
+	"editor.cursorSmoothCaretAnimation": "explicit"
+}
