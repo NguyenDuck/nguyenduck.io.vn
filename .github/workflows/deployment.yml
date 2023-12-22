@@ -26,19 +26,23 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: "NguyenDuck/nguyenduck.io.vn-build"
-          path: "deploy"
+          token: ${{ secrets.BUILD_TOKEN }}
+          path: "build"
 
       - name: Build
         run: npm run build
 
-      - name: Deploy to repository
+      - name: Prepare deploy to repository
         run: |
-          cp .cpanel.yml deploy -rf
-          cp build/* deploy -rf
-          cd deploy
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git config credential.helper cache
-          git add -A .
-          git commit -m "Update website"
-          git push https://${{ secrets.BUILD_TOKEN }}@github.com/NguyenDuck/nguyenduck.io.vn-build.git dev
+          cp .cpanel.yml build -rf
+
+      - name: Deploy
+        uses: liziwl/git-push-action@master
+        with:
+          git_token_holder: "NguyenDuck"
+          git_token: ${{ secrets.BUILD_TOKEN }}
+          commit_user: "github-actions"
+          commit_email: "github-actions@github.com"
+          push_dir: "build"
+          repository_url: "github.com/NguyenDuck/nguyenduck.io.vn-build.git"
+          branch: "dev"
