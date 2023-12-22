@@ -5,9 +5,9 @@ on:
     paths:
       - src
 
+run-name: Deployment
 jobs:
   build:
-    name: Deployment
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
