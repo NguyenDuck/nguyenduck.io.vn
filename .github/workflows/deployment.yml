@@ -10,6 +10,7 @@ permissions:
 
 jobs:
   build:
+    name: Deployment
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -28,6 +29,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: "NguyenDuck/nguyenduck.io.vn-build"
+          path: "build"
+
+      - name: Debug
+        run: |
+          ls
+          ls build
 
       - name: Build
         run: npm run build
