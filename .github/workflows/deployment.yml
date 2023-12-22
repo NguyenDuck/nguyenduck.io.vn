@@ -46,3 +46,4 @@ jobs:
           push_dir: "build"
           repository_url: "github.com/NguyenDuck/nguyenduck.io.vn-build.git"
           branch: "dev"
+          keep_history: true
