@@ -4,7 +4,7 @@ on:
   push:
     paths: ["src/**", "public/**"]
 
-run-name: Deployment
+name: Deployment
 jobs:
   build:
     runs-on: ubuntu-latest
